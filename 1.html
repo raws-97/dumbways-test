@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+</head>
+<body>
+    <h2>Array</h2>
+    <form onsubmit="return inputData()">
+        <p>Please insert the list</p>
+        <input type="text" id="box">
+        <input type="submit" value="Insert">
+      </form>
+      <p id="listArray"></p>
+      <form onsubmit="return deleteData()">
+        
+        <input type="submit" value="Delete">
+      </form>
+
+      <hr>
+      <h2>Check Word</h2>
+      <form onsubmit="return checkData()">
+        <input type="text" name="" id="word">
+        <input type="submit" value="Check">
+    </form>
+    <p id="listData"></p>
+
+    <script>
+        var list = [];
+        var ui = document.getElementById("listArray");
+        var box = document.getElementById("box");
+        var word = document.getElementById("word");
+        var check = document.getElementById("listData");
+
+        function inputData() {
+            
+            var boxvalue = box.value;
+            list.push(boxvalue);
+            ui.innerHTML = list;
+            box.value = "";
+            
+            return false;
+        }
+
+        function deleteData(){
+            list.pop();
+            ui.innerHTML = list;
+
+            return false;
+        }
+
+        function checkData(){
+
+            var text = "";
+            var val = word.value;
+
+            for (var i=0; i<list.length; i++){
+                var x = list[i].includes(val);
+
+                text += list[i] + " => " + x + "<br>";
+                check.innerHTML = text;
+            }
+
+            return false;
+        }
+    </script>
+    
+</body>
+</html>
